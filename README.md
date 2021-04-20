@@ -52,6 +52,14 @@ custom:
           myArn: #{MyResource.Arn}
         cpu: 512  # optional, defaults to 25% -> 256, see cloudformation docs for valid values
         memory: 1GB  # optional, defaults to 0.5GB
+        autoscaling:
+          minCapacity: 1
+          maxCapacity: 5
+          # ECSServiceAverageCPUUtilization | ECSServiceAverageMemoryUtilization
+          metricType: ECSServiceAverageCPUUtilization
+          targetValue: 50
+          scaleInCooldown: 300
+          scaleOutCooldown: 300
 ```
 
 Advanced usage
